@@ -26,16 +26,6 @@ Event::listen('new_chat_member', function ($member, $bot, $update) {
         $bot->sendMessage($chat_id, $welcome_text, [
             'parse_mode' => 'HTML',
         ]);
-    } else {
-        // Say Hi to new member
-        $first_name = $update['message']['new_chat_member']['first_name'];
-        $username = ($update['message']['new_chat_member']['username']) ? '( @'.$update['message']['new_chat_member']['username'].' )' : '';
-        $welcome_text = "📢 Bienvenido/a <b>$first_name</b> $username a <a href='https://telegram.me/PHP_Ve'>PHP.ve</a>, te invitamos a que leas la <a href='http://telegra.ph/PHPve-11-24'>Descripción y Normas del Grupo</a>";
-        $chat_id = $update['message']['chat']['id'];
-
-        $bot->sendMessage($chat_id, $welcome_text, [
-            'parse_mode' => 'HTML',
-        ]);
     }
     // Delete join message...
     $bot->deleteMessage($chat_id, $update['message']['message_id']);
