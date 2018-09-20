@@ -16,7 +16,7 @@ Event::listen('new_chat_member', function ($member, $bot, $update) {
     $user_id = $update['message']['new_chat_member']['id'];
 
     $str = $update['message']['new_chat_member']['first_name'];
-    $re = '/\p{Han}+/miu';
+    $re = '/[\x{3041}-\x{3096}\x{30A0}-\x{30FF}\x{3400}-\x{4DB5}\x{4E00}-\x{9FCB}\x{F900}-\x{FA6A}\x{2E80}-\x{2FD5}\x{FF5F}-\x{FF9F}\x{3000}-\x{303F}\x{31F0}-\x{31FF}\x{3220}-\x{3243}\x{3280}-\x{337F}]|\p{Han}+/miu';
     preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
 
     if (count($matches) > 0) {
